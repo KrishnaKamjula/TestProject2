@@ -10,16 +10,22 @@ import UIKit
 
 class HomeVC: UIViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        getData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func getData() {
+        APIManager.shared.getResponse(urlString: "https://www.californiapsychics.com/psychics?format=json", params: [:]) { (error) in
+            if error == nil {
+                self.collectionView.reloadData()
+            } else {
+                self.showAlert(message: "Failed to fetch ISS details. Go back and try again")
+            }
+        }
     }
-
-
 }
 

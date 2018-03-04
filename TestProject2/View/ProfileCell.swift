@@ -10,4 +10,37 @@ import UIKit
 
 class ProfileCell: UICollectionViewCell {
     
+    @IBOutlet weak var profileImgView: UIImageView!
+    @IBOutlet weak var psychicNameLbl: UILabel!
+    @IBOutlet weak var basePriceLbl: UILabel!
+    @IBOutlet weak var skillsLbl: UILabel!
+    @IBOutlet weak var specialitiesLbl: UILabel!
+    
+    override func prepareForReuse() {
+        profileImgView.image = #imageLiteral(resourceName: "defaultProfileImg")
+    }
+    
+    var name: String! {
+        didSet {
+            psychicNameLbl.text = name
+        }
+    }
+
+    var price: String! {
+        didSet {
+            basePriceLbl.text = "$ \(price)0"
+        }
+    }
+
+    var skills: String! {
+        didSet {
+            skillsLbl.text = skills
+        }
+    }
+    
+    var specialities: String! {
+        didSet {
+            specialitiesLbl.text = specialities
+        }
+    }
 }
