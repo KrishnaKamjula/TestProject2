@@ -26,9 +26,9 @@ class ProfileCell: UICollectionViewCell {
         }
     }
 
-    var price: String! {
+    var price: Double! {
         didSet {
-            basePriceLbl.text = "$ \(price)0"
+            basePriceLbl.text = "$ \(price ?? 0.0)0"
         }
     }
 
